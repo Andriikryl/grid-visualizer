@@ -1,8 +1,10 @@
 ---
+import Columns from "../components/Columns.svelte";
 import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Grid-visualizer">
   <Hero />
+  <Columns client:only="svelte" />
 </Layout>
