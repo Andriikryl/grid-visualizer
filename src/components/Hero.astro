@@ -1,0 +1,31 @@
+---
+import Container from "./Container.astro";
+---
+
+<section class="hero">
+  <Container>
+    <div class="hero__box">
+      <h1 class="hero__title">Grid cheat-shet</h1>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .hero {
+    height: 100dvh;
+  }
+  .hero__box {
+    padding-block-start: 50px;
+    display: grid;
+    place-items: center;
+  }
+  .hero__title {
+    display: block;
+    color: var(--black, #1b1b1b);
+    font-family: "Patrick Hand";
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 76.8px */
+  }
+</style>
