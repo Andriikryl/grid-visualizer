@@ -22,6 +22,7 @@
 
 <section class="columns">
   <div class="container">
+    <h3 class="colums__title">Grid-template-columns</h3>
     <div class="controls">
       <label>
         <input type="number" bind:value={a} min="1" max="99" />
@@ -42,12 +43,43 @@
         </div>
       </div>
     </div>
+    <div>
+      <code class="cade__box">
+        .parent <br />
+        <p>
+          <span> display: grid;</span>
+          <span> grid-template-columns: {a}% {b}%;</span>
+        </p>
+      </code>
+    </div>
   </div>
 </section>
 
 <style>
+  .cade__box {
+    margin-block-start: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 350px;
+    display: block;
+    background-color: #fff;
+  }
+  .cade__box p {
+    display: flex;
+    flex-direction: column;
+    margin-inline-start: 20px;
+  }
   .columns {
     margin-block-end: 30px;
+  }
+  .colums__title {
+    color: var(--black, #1b1b1b);
+    font-family: "Patrick Hand";
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-block-end: 20px;
   }
   .controls {
     margin-block-end: 20px;
@@ -74,7 +106,6 @@
     overflow: hidden;
     gap: 10px;
   }
-
   .child {
     border: 3px dashed #e63946;
     padding: 20px;
@@ -89,6 +120,6 @@
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
-    line-height: 28px; /* 127.273% */
+    line-height: 28px;
   }
 </style>
