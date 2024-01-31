@@ -1,7 +1,15 @@
 <script>
+  import { range } from "../utils/utils";
   import CodeBox from "./CodeBox.svelte";
   import Playground from "./Playground.svelte";
-
+  let templates = [
+    "1fr 1fr",
+    "1fr 2fr",
+    "50px 100px 1fr",
+    "repeat(2, 1fr auto)",
+    "none",
+  ];
+  let currentTemplate = templates[0];
   let a = 30;
   let b = 70;
   $: {
@@ -46,7 +54,7 @@
         </div>
       </div>
     </Playground>
-    <div>
+    <div class="box">
       <CodeBox>
         .parent <br />
         <p class="code">
@@ -55,10 +63,49 @@
         </p>
       </CodeBox>
     </div>
+    <form class="form">
+      {#each templates as template}
+        <label>
+          <input
+            type="radio"
+            name="flavours"
+            value={template}
+            bind:group={currentTemplate}
+          />
+          {template}
+        </label>
+      {/each}
+    </form>
+    <Playground>
+      <div class="parent" style="grid-template-columns: {currentTemplate}">
+        {#each range(1, 10) as item}
+          <div class="child">{item}</div>
+        {/each}
+      </div>
+    </Playground>
+    <div class="box">
+      <CodeBox>
+        .parent <br />
+        <p class="code">
+          <span> display: grid;</span>
+          <span> grid-template-columns: {currentTemplate};</span>
+        </p>
+      </CodeBox>
+    </div>
   </div>
 </section>
 
 <style>
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-block-end: 20px;
+    background-color: #fefae0;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 300px;
+  }
   .code {
     display: flex;
     flex-direction: column;
@@ -99,5 +146,8 @@
     font-style: normal;
     font-weight: 400;
     line-height: 28px;
+  }
+  .box {
+    margin-block-end: 30px;
   }
 </style>
