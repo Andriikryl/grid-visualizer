@@ -1,4 +1,5 @@
 <script>
+  import CodeBox from "./CodeBox.svelte";
   import Playground from "./Playground.svelte";
 
   let a = 30;
@@ -46,41 +47,19 @@
       </div>
     </Playground>
     <div>
-      <code class="cade__box">
+      <CodeBox>
         .parent <br />
-        <p>
+        <p class="code">
           <span> display: grid;</span>
           <span> grid-template-columns: {a}% {b}%;</span>
         </p>
-      </code>
+      </CodeBox>
     </div>
   </div>
 </section>
 
 <style>
-  .cade__box {
-    margin-block-start: 30px;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 350px;
-    display: block;
-    background-color: #fff;
-    position: relative;
-  }
-  .cade__box::after {
-    content: "";
-    background-image: url("/arrows/Arrow-curved.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: block;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: -30px;
-    right: -50px;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
-  }
-  .cade__box p {
+  .code {
     display: flex;
     flex-direction: column;
     margin-inline-start: 20px;

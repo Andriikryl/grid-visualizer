@@ -1,5 +1,6 @@
 <script>
   import { range } from "../utils/utils";
+  import CodeBox from "./CodeBox.svelte";
   import Playground from "./Playground.svelte";
   let templates = ["1fr 1fr", "1fr 150px", "repeat(2, 2fr  1fr)", "none"];
   let currentTemplate = templates[0];
@@ -23,17 +24,38 @@
         {/each}
       </form>
     </div>
-    <Playground>
-      <div class="parent" style="grid-template-columns: {currentTemplate}">
-        {#each range(1, 10) as item}
-          <div class="child">{item}</div>
-        {/each}
+    <div>
+      <Playground>
+        <div class="parent" style="grid-template-columns: {currentTemplate}">
+          {#each range(1, 10) as item}
+            <div class="child">{item}</div>
+          {/each}
+        </div>
+      </Playground>
+      <div>
+        <CodeBox>
+          <div>
+            <span>
+              .parent <br />
+            </span>
+            <p class="inner__styles">
+              display: grid; <br /> grid-template-columns: repeat(3, 1fr);
+              <br /> grid-template-rows: {currentTemplate};
+            </p>
+          </div>
+        </CodeBox>
       </div>
-    </Playground>
+    </div>
   </div>
 </section>
 
 <style>
+  .rows {
+    margin-block-end: 20px;
+  }
+  .inner__styles {
+    margin-inline-start: 20px;
+  }
   .form {
     display: flex;
     flex-direction: column;
