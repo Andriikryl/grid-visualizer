@@ -1,4 +1,6 @@
 <script>
+  import Playground from "./Playground.svelte";
+
   let a = 30;
   let b = 70;
   $: {
@@ -33,7 +35,7 @@
         <input type="range" bind:value={b} min="1" max="99" />
       </label>
     </div>
-    <div class="playground">
+    <Playground>
       <div class="parent" style="grid-template-columns: {a}% {b}%">
         <div class="child">
           <p class="number">{a}</p>
@@ -42,7 +44,7 @@
           <p class="number">{b}</p>
         </div>
       </div>
-    </div>
+    </Playground>
     <div>
       <code class="cade__box">
         .parent <br />
@@ -63,6 +65,20 @@
     max-width: 350px;
     display: block;
     background-color: #fff;
+    position: relative;
+  }
+  .cade__box::after {
+    content: "";
+    background-image: url("/arrows/Arrow-curved.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: -30px;
+    right: -50px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
   }
   .cade__box p {
     display: flex;
@@ -83,23 +99,6 @@
   }
   .controls {
     margin-block-end: 20px;
-  }
-  .playground {
-    width: 100%;
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #e5e5f7;
-    opacity: 0.8;
-    background-image: linear-gradient(#f3770a 1px, transparent 1px),
-      linear-gradient(to right, #f3770a 1px, #e5e5f7 1px);
-    background-size: 20px 20px;
-    box-shadow:
-      0 1px 1px rgba(0, 0, 0, 0.12),
-      0 2px 2px rgba(0, 0, 0, 0.12),
-      0 4px 4px rgba(0, 0, 0, 0.12),
-      0 8px 8px rgba(0, 0, 0, 0.12),
-      0 16px 16px rgba(0, 0, 0, 0.12);
   }
   .parent {
     display: grid;
