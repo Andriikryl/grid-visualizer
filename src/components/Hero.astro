@@ -1,18 +1,43 @@
 ---
 import Container from "./Container.astro";
+import { range } from "../utils/utils";
+import { random } from "../utils/random";
+function getStyle(size: number, color: string) {
+  return `width: ${size}px; height: ${size}px; background-color: ${color};`;
+}
 ---
 
 <section class="hero">
   <Container>
     <div class="hero__box">
       <h1 class="hero__title">Grid cheat-shet</h1>
+      <div class="wrapper">
+        {
+          range(1, 100).map((box) => {
+            let size = random(10, 60);
+            let randomColor = `#${Math.floor(Math.random() * 16777215).toString(
+              16
+            )}`;
+            return (
+              <div class="inner__box" style={getStyle(size, randomColor)} />
+            );
+          })
+        }
+      </div>
     </div>
   </Container>
 </section>
 
 <style>
   .hero {
-    height: 100dvh;
+    margin-block-end: 40px;
+  }
+  .wrapper {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
   }
   .hero__box {
     padding-block-start: 50px;
@@ -27,5 +52,6 @@ import Container from "./Container.astro";
     font-style: normal;
     font-weight: 400;
     line-height: 120%; /* 76.8px */
+    margin-block-end: 20px;
   }
 </style>
