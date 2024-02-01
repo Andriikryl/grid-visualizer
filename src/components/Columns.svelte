@@ -76,6 +76,7 @@
         </label>
       {/each}
     </form>
+    
     <Playground>
       <div class="parent" style="grid-template-columns: {currentTemplate}">
         {#each range(1, 10) as item}

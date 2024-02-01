@@ -5,6 +5,7 @@ import ListValues from "../components/ListValues.svelte";
 import Repeat from "../components/Repeat.svelte";
 import Rows from "../components/Rows.svelte";
 import Layout from "../layouts/Layout.astro";
+import GridAutoR from "../components/GridAutoR.svelte";
 ---
 
 <Layout title="Grid-visualizer">
@@ -13,4 +14,5 @@ import Layout from "../layouts/Layout.astro";
   <Rows client:only="svelte" />
   <ListValues client:only="svelte" />
   <Repeat client:only="svelte" />
+  <GridAutoR client:only="svelte" />
 </Layout>

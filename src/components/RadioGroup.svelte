@@ -1,6 +1,6 @@
 <script>
   let currentTemplate;
-  let templates;
+  let templates ;
 </script>
 
 <form class="form">
