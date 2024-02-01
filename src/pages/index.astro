@@ -2,6 +2,7 @@
 import Columns from "../components/Columns.svelte";
 import Hero from "../components/Hero.astro";
 import ListValues from "../components/ListValues.svelte";
+import Repeat from "../components/Repeat.svelte";
 import Rows from "../components/Rows.svelte";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -11,4 +12,5 @@ import Layout from "../layouts/Layout.astro";
   <Columns client:only="svelte" />
   <Rows client:only="svelte" />
   <ListValues client:only="svelte" />
+  <Repeat client:only="svelte" />
 </Layout>
