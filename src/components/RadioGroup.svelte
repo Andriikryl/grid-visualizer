@@ -1,6 +1,12 @@
-<script>
-  let currentTemplate;
-  let templates ;
+<script type="module">
+  import { createEventDispatcher } from "svelte";
+  export let currentTemplate;
+  export let templates;
+  const dispatch = createEventDispatcher();
+  function handleChange(event) {
+    currentTemplate = event.target.value;
+    dispatch("change", currentTemplate);
+  }
 </script>
 
 <form class="form">
@@ -11,6 +17,7 @@
         name="flavours"
         value={template}
         bind:group={currentTemplate}
+        on:change={handleChange}
       />
       {template}
     </label>

@@ -2,27 +2,23 @@
   import { range } from "../utils/utils";
   import CodeBox from "./CodeBox.svelte";
   import Playground from "./Playground.svelte";
+  import RadioGroup from "./RadioGroup.svelte";
   let templates = ["100px", "150px", "1fr", "none"];
   let currentTemplate = templates[0];
+  function handleTemplateChange(event) {
+    currentTemplate = event.detail;
+  }
 </script>
 
 <section class="repeat">
   <div class="container">
     <h3 class="rows__title">grid-auto-rows - function</h3>
     <div>
-      <form class="form">
-        {#each templates as template}
-          <label>
-            <input
-              type="radio"
-              name="flavours"
-              value={template}
-              bind:group={currentTemplate}
-            />
-            {template}
-          </label>
-        {/each}
-      </form>
+      <RadioGroup
+        {currentTemplate}
+        {templates}
+        on:change={handleTemplateChange}
+      />
     </div>
     <div>
       <Playground>
@@ -57,16 +53,6 @@
   }
   .inner__styles {
     margin-inline-start: 20px;
-  }
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-block-end: 20px;
-    background-color: #fefae0;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 300px;
   }
   .rows__title {
     color: var(--black, #1b1b1b);

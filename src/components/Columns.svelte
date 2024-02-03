@@ -2,6 +2,7 @@
   import { range } from "../utils/utils";
   import CodeBox from "./CodeBox.svelte";
   import Playground from "./Playground.svelte";
+  import RadioGroup from "./RadioGroup.svelte";
   let templates = [
     "1fr 1fr",
     "1fr 2fr",
@@ -28,6 +29,9 @@
     } else {
       a = 100 - b;
     }
+  }
+  function handleTemplateChange(event) {
+    currentTemplate = event.detail;
   }
 </script>
 
@@ -63,20 +67,12 @@
         </p>
       </CodeBox>
     </div>
-    <form class="form">
-      {#each templates as template}
-        <label>
-          <input
-            type="radio"
-            name="flavours"
-            value={template}
-            bind:group={currentTemplate}
-          />
-          {template}
-        </label>
-      {/each}
-    </form>
-    
+    <RadioGroup
+      {currentTemplate}
+      {templates}
+      on:change={handleTemplateChange}
+    />
+
     <Playground>
       <div class="parent" style="grid-template-columns: {currentTemplate}">
         {#each range(1, 10) as item}
@@ -97,16 +93,6 @@
 </section>
 
 <style>
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-block-end: 20px;
-    background-color: #fefae0;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 300px;
-  }
   .code {
     display: flex;
     flex-direction: column;
