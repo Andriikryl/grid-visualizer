@@ -8,6 +8,7 @@ import Layout from "../layouts/Layout.astro";
 import GridAutoR from "../components/GridAutoR.svelte";
 import AutoColumns from "../components/AutoColumns.svelte";
 import RowStart from "../components/RowStart.svelte";
+import RowMix from "../components/RowMix.svelte";
 ---
 
 <Layout title="Grid-visualizer">
@@ -19,4 +20,5 @@ import RowStart from "../components/RowStart.svelte";
   <GridAutoR client:only="svelte" />
   <AutoColumns client:only="svelte" />
   <RowStart client:only="svelte" />
+  <RowMix client:only="svelte" />
 </Layout>
